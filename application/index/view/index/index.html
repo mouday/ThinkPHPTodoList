@@ -1,0 +1,34 @@
+{extend name="common/base" /}
+
+{block name="body"}
+<form action="/addItem" method="POST">
+    <input type="text" name="content">
+    <input type="submit">
+</form>
+
+<table border="border: 1px solid #cccccc" cellspacing="0">
+    <thead>
+        <tr>
+            <td>序号</td>
+            <td>内容</td>
+            <td>创建时间</td>
+            <td>更新时间</td>
+            <td>编辑</td>
+            <td>删除</td>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach $data as $key=>$value}
+        <tr>
+            <td>{$key + 1}</td>
+            <td>{$value.content}</td>
+            <td>{$value.create_time}</td>
+            <td>{$value.update_time}</td>
+            <td><a href="\editItem?id={$value.id}">编辑</a></td>
+            <td><a href="\deleteItem?id={$value.id}">删除</a></td>
+        </tr>
+        {/foreach}
+    </tbody>
+
+</table>
+{/block}
